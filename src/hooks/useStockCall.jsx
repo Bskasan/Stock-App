@@ -2,21 +2,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSuccess, fetchFail, fetchStart } from "../features/stockSlice";
 import axios from "axios";
 import { toastErrorNotify } from "../helper/ToastNotify";
+import useAxios from "./useAxios";
 
 const useStockCall = () => {
   const dispatch = useDispatch();
-  const { token } = useSelector((state) => state.auth);
+  const { axiosWithToken } = useAxios();
 
   const getStockData = async (url) => {
-    const BASE_URL = "https://12177.fullstack.clarusway.com/";
+    // const BASE_URL = "https://12177.fullstack.clarusway.com/";
     dispatch(fetchStart());
 
     try {
-      const { data } = await axios(`${BASE_URL}stock/${url}/`, {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      });
+      // const { data } = await axios(`${BASE_URL}stock/${url}/`, {
+      //   headers: {
+      //     Authorization: `Token ${token}`,
+      //   },
+      // });
+      const { data } = await axiosWithToken(`stock/${url}/`);
       dispatch(getSuccess({ data, url }));
     } catch (error) {
       console.log(error);
@@ -25,14 +27,9 @@ const useStockCall = () => {
   };
 
   const deleteStockData = async (url, id) => {
-    const BASE_URL = "https://12177.fullstack.clarusway.com/";
     dispatch(fetchStart());
     try {
-      await axios(`${BASE_URL}stock/${url}/`, {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      });
+      await axiosWithToken(`stock/${url}/${id}`);
       getStockData(url);
     } catch (error) {
       console.log(error);
