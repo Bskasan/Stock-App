@@ -15,16 +15,21 @@ export default function FirmModal({ open, handleClose, info, setInfo }) {
   //     image: "",
   //   });
 
-  const { postStockData } = useStockCall();
+  const { postStockData, putStockData } = useStockCall();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setInfo({ ...info, [name]: value });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    postStockData("firms", info);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (info.id) {
+      putStockData("firms", info);
+    } else {
+      postStockData("firms", info);
+    }
+
     handleClose();
     setInfo({ name: "", phone: "", address: "", image: "" });
   };
