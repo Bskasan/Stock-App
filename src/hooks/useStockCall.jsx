@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getSuccess, fetchFail, fetchStart } from "../features/stockSlice";
 import axios from "axios";
-import { toastErrorNotify } from "../helper/ToastNotify";
+import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
 
 const useStockCall = () => {
@@ -38,7 +38,19 @@ const useStockCall = () => {
     }
   };
 
-  return { getStockData, deleteStockData };
+  const postStockData = async (url, info) => {
+    dispatch(fetchStart());
+    try {
+      await axiosWithToken.post(`stock/${url}/`, info);
+      toastSuccessNotify(`${url} successfuly posted`);
+      getStockData(url);
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
+      toastErrorNotify(`${url} can not be deleted`);
+    }
+  };
+  return { getStockData, deleteStockData, postStockData };
 };
 
 export default useStockCall;
