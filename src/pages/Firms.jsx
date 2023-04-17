@@ -33,8 +33,6 @@ const Firms = () => {
   const { getStockData } = useStockCall();
   const { firms } = useSelector((state) => state.stock);
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   const [info, setInfo] = useState({
     name: "",
@@ -42,6 +40,9 @@ const Firms = () => {
     address: "",
     image: "",
   });
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     // getFirms()
@@ -62,7 +63,12 @@ const Firms = () => {
         New Firm
       </Button>
 
-      <FirmModal open={open} handleClose={handleClose} />
+      <FirmModal
+        open={open}
+        handleClose={handleClose}
+        info={info}
+        setInfo={setInfo}
+      />
 
       <Grid container sx={flex}>
         {firms?.map((firm) => (
