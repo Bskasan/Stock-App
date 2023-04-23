@@ -13,7 +13,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { btnStyle } from "../styles/globalStyles";
 
 const Products = () => {
-  const { getStockData, deleteStockData } = useStockCall();
+  const { deleteStockData, getProCatBrand } = useStockCall();
   const { products } = useSelector((state) => state.stock);
   const [open, setOpen] = useState(false);
 
@@ -91,7 +91,8 @@ const Products = () => {
   ];
 
   useEffect(() => {
-    getStockData("products");
+    // getStockData("products");
+    getProCatBrand();
   }, []); // eslint-disable-line
 
   return (
