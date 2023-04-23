@@ -26,34 +26,45 @@ const Products = () => {
   const handleClose = () => setOpen(false);
 
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "id", headerName: "#", minWidth: 60, flex: 1 },
     {
-      field: "firstName",
-      headerName: "First name",
-      width: 150,
-      editable: true,
+      field: "category",
+      headerName: "Category",
+      headerAlign: "center",
+      align: "center",
+      minWidth: 40,
+      maxWidth: 70
     },
     {
-      field: "lastName",
-      headerName: "Last name",
-      width: 150,
-      editable: true,
+      field: "brand",
+      headerName: "Brand",
+      headerAlign: "center",
+      align: "center",
+      minWidth: 150,
     },
     {
-      field: "age",
-      headerName: "Age",
+      field: "name",
+      headerName: "Name",
       type: "number",
-      width: 110,
-      editable: true,
+      headerAlign: "center",
+      align: "center",
+      minWidth: 150,
+    },
+
+    {
+      field: "stock",
+      headerName: "Stock",
+      headerAlign: "center",
+      align: "center",
+      minWidth: 100,
     },
     {
-      field: "fullName",
-      headerName: "Full name",
-      description: "This column has a value getter and is not sortable.",
-      sortable: false,
-      width: 160,
-      valueGetter: (params) =>
-        `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+      field: "actions",
+      headerName: "Actions",
+      type: "number",
+      headerAlign: "center",
+      align: "center",
+      minWidth: 50,
     },
   ];
 
@@ -94,8 +105,9 @@ const Products = () => {
         setInfo={setInfo}
       />
 
-      <Box sx={{ height: 400, width: "100%" }}>
+      <Box sx={{ width: "100%" }}>
         <DataGrid
+          autoHeight
           rows={rows}
           columns={columns}
           initialState={{
@@ -106,7 +118,6 @@ const Products = () => {
             },
           }}
           pageSizeOptions={[5]}
-          checkboxSelection
           disableRowSelectionOnClick
         />
       </Box>
