@@ -8,7 +8,7 @@ import ProductModal from "../components/modals/ProductModal";
 import ProductCard from "../components/ProductCard";
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
+import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { btnStyle } from "../styles/globalStyles";
 
@@ -129,6 +129,7 @@ const Products = () => {
           }}
           pageSizeOptions={[5]}
           disableRowSelectionOnClick
+          slots={{ toolbar: GridToolbar }}
         />
       </Box>
 
