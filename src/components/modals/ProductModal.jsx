@@ -4,8 +4,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-
-import { modalStyle } from "../../styles/globalStyle";
+import { modalStyle } from "../../styles/globalStyles";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import useStockCall from "../../hooks/useStockCall";
