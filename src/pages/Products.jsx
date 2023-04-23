@@ -26,14 +26,22 @@ const Products = () => {
   const handleClose = () => setOpen(false);
 
   const columns = [
-    { field: "id", headerName: "#", minWidth: 60, flex: 1 },
+    {
+      field: "id",
+      headerName: "#",
+      minWidth: 40,
+      maxWidth: 70,
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
+    },
     {
       field: "category",
       headerName: "Category",
       headerAlign: "center",
       align: "center",
-      minWidth: 40,
-      maxWidth: 70
+      minWidth: 150,
+      flex: 3,
     },
     {
       field: "brand",
@@ -41,6 +49,7 @@ const Products = () => {
       headerAlign: "center",
       align: "center",
       minWidth: 150,
+      flex: 2,
     },
     {
       field: "name",
@@ -49,6 +58,7 @@ const Products = () => {
       headerAlign: "center",
       align: "center",
       minWidth: 150,
+      flex: 2,
     },
 
     {
@@ -57,6 +67,7 @@ const Products = () => {
       headerAlign: "center",
       align: "center",
       minWidth: 100,
+      flex: 0.7,
     },
     {
       field: "actions",
@@ -65,6 +76,7 @@ const Products = () => {
       headerAlign: "center",
       align: "center",
       minWidth: 50,
+      flex: 1,
     },
   ];
 
@@ -108,7 +120,7 @@ const Products = () => {
       <Box sx={{ width: "100%" }}>
         <DataGrid
           autoHeight
-          rows={rows}
+          rows={products}
           columns={columns}
           initialState={{
             pagination: {
