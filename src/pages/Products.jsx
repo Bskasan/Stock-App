@@ -91,7 +91,11 @@ const Products = () => {
   ];
 
   useEffect(() => {
-    // getStockData("products");
+    // getStockData("products")
+    // getStockData("categories")
+    // getStockData("brands")
+
+    //! Promise All
     getProCatBrand();
   }, []); // eslint-disable-line
 
