@@ -64,6 +64,7 @@ const useStockCall = () => {
     }
   };
 
+  //! We called them once for performance.
   const getProCatBrand = async () => {
     dispatch(fetchStart());
     try {
