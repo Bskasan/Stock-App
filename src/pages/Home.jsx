@@ -1,5 +1,18 @@
-const Home = () => {
-  return <div>Home</div>
-}
+import { Typography } from "@mui/material";
+import KpiCards from "../components/KpiCards";
+import Charts from "../components/Charts";
 
-export default Home
+const Home = () => {
+  return (
+    <div>
+      <Typography variant="h4" color="error" mb={3}>
+        Dashboard
+      </Typography>
+
+      <KpiCards />
+      <Charts />
+    </div>
+  );
+};
+
+export default Home;
